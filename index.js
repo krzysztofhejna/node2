@@ -1,5 +1,6 @@
 var EventEmitter = require('events').EventEmitter;
 var OSinfo = require('./modules/OSinfo');
+var listModules = require('./modules/listModules');
 
 var emitter = new EventEmitter();
 emitter.on('beforeCommand', function(instruction) {
@@ -31,6 +32,9 @@ process.stdin.on('readable', function() {
       break;
     case '/getOSinfo':
       OSinfo.print();
+      break;
+    case '/listmodules':
+      listModules.print();
       break;
     default:
       process.stderr.write('Wrong instruction\n');
